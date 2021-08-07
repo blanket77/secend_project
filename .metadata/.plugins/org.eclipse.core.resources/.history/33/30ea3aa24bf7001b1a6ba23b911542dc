@@ -1,0 +1,28 @@
+package Arithmetic;
+
+public class Sum extends Arith{
+	private int a;
+	private int b;
+	private int result;
+	
+
+	public void present(int random) {
+		this.a = random%8+1;
+		this.b = random%(9-random)+1;
+	};
+	
+	public int get_a()
+	{
+		return this.a;
+	}
+	public int get_b()
+	{
+		return this.b;
+	}
+	
+	public int get_r()
+	{
+		return this.result;
+	}
+	
+}

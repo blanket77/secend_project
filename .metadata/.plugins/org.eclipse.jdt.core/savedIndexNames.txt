@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\quant\OneDrive\바탕 화면\취미 및 기타\아동센터\.metadata\.plugins\org.eclipse.jdt.core
+3460880079.index
+764588760.index

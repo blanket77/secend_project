@@ -1,0 +1,22 @@
+package Arithmetic;
+
+public class Arith {
+	protected int a;
+	protected int b;
+	protected int result;
+	
+	public int get_a()
+	{
+		return this.a;
+	}
+	public int get_b()
+	{
+		return this.b;
+	}
+	
+	public int get_r()
+	{
+		return this.result;
+	}
+	
+}

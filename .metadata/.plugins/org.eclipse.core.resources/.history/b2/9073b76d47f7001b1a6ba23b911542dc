@@ -1,0 +1,64 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+import Arithmetic.Sum;
+
+public class Main {
+		
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String op, level ;
+		boolean bol = true;
+		Teacher t1 = new Teacher();
+		int user_input;
+		
+		boolean b = true;
+		while(b) {
+			System.out.println("어떤 문제를 풀것인가요? (+,-,*,/) 중 하나만 입력하세요");
+			op = br.readLine();
+			if(op == "+"|| op == "-"|| op == "*"|| op == "/")
+				b = false;
+		}
+		
+		b= true;
+		while(b) {
+			System.out.println("난이도는? (Hard, Easy) 중 하나만 입력하세요");	
+			level = br.readLine();
+			if(level == "Hard"|| level == "Easy")
+				b = false;		
+		}
+		
+		t1.setTimer(Integer.parseInt(br.readLine()));
+		
+		switch (op) {
+		case "+": {
+			if(level == "Hard")	{
+			}
+			else {
+				while(bol) {
+					Sum es = new Sum();
+					es.present((int)Math.random()*10+1);
+					System.out.println(es.get_a() + " + " + es.get_b() + " = ?");
+					user_input = Integer.parseInt(br.readLine());
+					if(user_input == es.get_r())
+						t1.TrueTalk();
+					else
+						t1.FalseTalk(es.get_a(), es.get_b(), es.get_r(), '+');
+					bol = t1.check();
+				}
+			}
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + op);
+		}
+		
+	}
+		
+}
+
+
+

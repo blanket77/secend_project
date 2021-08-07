@@ -1,0 +1,21 @@
+public class Muchine {
+	// 문제 내용과 난이도를 결정하고 문제를 출력한다.
+	private char problem ;
+	private char level ;
+	
+	void set_level(char level) {
+		this.level = level;
+	}
+	
+	void set_problem(char problem) {
+		this.problem = problem;
+	}
+	
+	switch (this.problem) {
+	case '+': {
+		break;	
+	}
+	default:
+		throw new IllegalArgumentException("Unexpected value: " + problem);
+	}
+}

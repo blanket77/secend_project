@@ -1,0 +1,15 @@
+package Arithmetic;
+
+public class Sum_H extends Arith{
+	// a = rand()%9+1;
+			a = rand()%6+4;  //5
+			//tmp = 10 - a;  // 5
+			tmp = 12-a; //6
+			//b = rand()%a + tmp;   // (0,1,2,3,4) + 5
+			b = rand()%(a-2) + tmp;
+	public void present(int random) {
+		this.a = random%6+4;
+		this.b = random%(this.a-2) + 12 - this.a;
+		this.result = a+b;
+	};
+}
