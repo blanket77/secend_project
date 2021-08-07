@@ -1,0 +1,11 @@
+package Arithmetic;
+
+public class Sum extends Arith{
+
+	public void present(int random) {
+		int randoms = (int)(Math.random()*17 + 10);
+		this.a = random%8+1;
+		this.b = randoms%(9-this.a)+1;
+		this.result = a+b;
+	};
+}

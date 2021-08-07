@@ -4,6 +4,9 @@ public abstract class Arith {
 	protected int a;
 	protected int b;
 	protected int result;
+	protected int random1;
+	protected int random2;
+
 	
 	public int get_a()
 	{
@@ -14,10 +17,12 @@ public abstract class Arith {
 		return this.b;
 	}
 	
-	public int get_r()
+	public int get_result()
 	{
 		return this.result;
 	}
 	
-	abstract void present(int random);
+
+	
+	abstract public void present();
 }

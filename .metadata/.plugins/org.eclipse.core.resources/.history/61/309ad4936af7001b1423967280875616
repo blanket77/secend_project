@@ -1,0 +1,12 @@
+package Arithmetic;
+
+public class Sum_H extends Arith{
+
+	@Override
+	public void present(int random) {
+		this.a = random%6+4;
+		this.b = random%(this.a-2) + 12 - this.a;
+		this.result = a+b;
+	}
+
+}

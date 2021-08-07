@@ -5,19 +5,25 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import Arithmetic.Arith;
+import Arithmetic.Substration;
+import Arithmetic.Substration_H;
 import Arithmetic.Sum;
+import Arithmetic.Sum_H;
 
 public class Main {
-		
+	static char op = 0 ;
+	static String level = null;
+	static boolean bol = true;
+	static Teacher t1 = new Teacher();
+	static String user_input;
+	static int user_int;
+	static int tmp;
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+	
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		char op = 0 ;
-		String level = null;
-		boolean bol = true;
-		Teacher t1 = new Teacher();
-		String user_input;
-		int user_int;
+
 		
 		boolean b = true;
 		while(b) {
@@ -40,33 +46,46 @@ public class Main {
 		t1.start();
 		
 		
-		int tmp;
+
 		switch (op) {
 		case '+': {
-			if(level == "Hard")	{
-				System.out.println("hello");
-				break;
+			if(level.equals("Hard")){
+				Sum_H hs = new Sum_H();
+				while(bol) {
+					hs.present();
+					implement(hs);
+				}
+				break;			
 			}
 			else {
 				Sum es = new Sum();
 				while(bol) {
-					tmp = (int)(Math.random()*17 + 10);
-					es.present(tmp);
-					System.out.println(es.get_a() + " " + op +" " + es.get_b() + " = ?");
-					user_input = br.readLine();
-					if(t1.stop(user_input)) 
-						break;
-					
-					user_int = Integer.parseInt(user_input);
-					if(user_int == es.get_r())
-						t1.TrueTalk();
-					else
-						t1.FalseTalk(es.get_a(), es.get_b(), es.get_r(), op);
-					bol = t1.check(); 
+					es.present();
+					implement(es);
 				}
 				break;
 			}
 		}
+		
+		case '-': {
+			if(level.equals("Hard"))	{
+				Substration_H sub_H = new Substration_H();
+				while(bol) {
+					sub_H.present();
+					implement(sub_H);
+				}
+				break;			
+				}
+			else {
+				Substration sub = new Substration();
+				while(bol) {
+					sub.present();
+					implement(sub);
+				}
+				break;
+			}
+		}
+		
 		default:
 			throw new Error("입력값이 잘못되었습니다.");
 		}
@@ -74,7 +93,29 @@ public class Main {
 		br.close();
 		bw.close();
 	}
-// 안녕
+	static void implement(Arith es) throws IOException {
+		boolean b = true;
+		while(b) {
+			System.out.println(es.get_a() + " " + op +" " + es.get_b() + " = ?");
+			user_input = br.readLine();
+			if(t1.stop(user_input)) {
+				bol = false;
+				return;
+			}
+			for(int i =0; i< user_input.length();i++) {
+				if(user_input.charAt(i)>='0' && user_input.charAt(i)<='9')
+					b = false;
+			}
+		}
+		
+			user_int = Integer.parseInt(user_input);
+			if(user_int == es.get_result())
+				t1.TrueTalk();
+			else
+				t1.FalseTalk(es.get_a(), es.get_b(), es.get_result(), op);
+			bol = t1.check();
+	}
+	
 }
 
 
